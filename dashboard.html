@@ -3,62 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mohamed Abdelrhman - Frontend Developer Portfolio">
+    <meta name="description" content="Mohamed Abdelrhman - Private Portfolio Dashboard">
     <title>Mohamed Abdelrhman | Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
 <header class="navbar">
-    <a class="logo" href="dashboard.html">portfolio.</a>
+    <a class="logo" href="index.html">portfolio.</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
         <span></span><span></span><span></span>
     </button>
     <nav id="mainNav">
-        <a href="dashboard.html" class="nav-link active">Home</a>
+        <a href="index.html" class="nav-link">Home</a>
         <a href="about.html" class="nav-link">About</a>
         <a href="portfolio.html" class="nav-link">Projects</a>
         <a href="contact.html" class="nav-link">Contact</a>
         <a href="blog.html" class="nav-link">Blog</a>
         <a href="login.html" class="nav-link" data-auth="login">Login</a>
         <a href="register.html" class="nav-link signup-nav" data-auth="register">Sign up</a>
-        <a href="#" class="nav-link logout-nav" id="logoutLink" style="display:none;">Logout</a>
-        <span class="user-nav" id="userNav" style="display:none;"></span>
+        <a href="dashboard.html" class="nav-link active" data-auth="dashboard">Dashboard</a>
+        <a href="#" class="nav-link logout-nav" id="logoutLink">Logout</a>
+        <span class="user-nav" id="userNav" aria-live="polite"></span>
     </nav>
 </header>
-<main>
-<section class="page hero">
-    <div class="hero-grid"></div>
-    <div class="hero-inner">
-        <div class="hero-text">
-            <p class="small-title">Hello,</p>
-            <h1>Mohamed Abdelrhman</h1>
-            <h2>And I'm a <span>Frontend Developer</span></h2>
-            <p class="description">
-                I build modern and responsive websites using HTML, CSS and JavaScript.
-                I turn ideas into beautiful and functional web experiences.
-            </p>
-            <div class="hero-buttons">
-                <a href="portfolio.html" class="btn btn-primary">View Projects</a>
-                <a href="contact.html" class="btn btn-outline">Contact Me</a>
+
+<main class="dashboard-page">
+    <section class="dashboard-shell">
+        <div class="dashboard-heading">
+            <div>
+                <p class="small-title">Private Area</p>
+                <h1>Dashboard</h1>
+                <p>Welcome, <strong id="dashboardUserName">User</strong></p>
             </div>
-            <div class="social-links">
-                <a href="https://github.com/mohamedabdelrhman9876-hub" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.facebook.com/share/1JM7uPxY1c/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="index.html" class="btn btn-outline">View Portfolio</a>
+        </div>
+
+        <div class="dashboard-cards">
+            <article class="dashboard-card user-card">
+                <div class="dashboard-card-icon"><i class="fas fa-user"></i></div>
+                <div>
+                    <span>Name</span>
+                    <strong id="profileName">—</strong>
+                </div>
+            </article>
+            <article class="dashboard-card user-card">
+                <div class="dashboard-card-icon"><i class="fas fa-envelope"></i></div>
+                <div>
+                    <span>Email</span>
+                    <strong id="profileEmail">—</strong>
+                </div>
+            </article>
+            <article class="dashboard-card user-card">
+                <div class="dashboard-card-icon"><i class="fas fa-fingerprint"></i></div>
+                <div>
+                    <span>User ID</span>
+                    <strong id="profileUid">—</strong>
+                </div>
+            </article>
+            <article class="dashboard-card user-card">
+                <div class="dashboard-card-icon"><i class="fas fa-calendar"></i></div>
+                <div>
+                    <span>Account Created</span>
+                    <strong id="profileCreatedAt">—</strong>
+                </div>
+            </article>
+            <article class="dashboard-card total-card">
+                <div class="dashboard-card-icon"><i class="fas fa-inbox"></i></div>
+                <div>
+                    <span>Total Messages</span>
+                    <strong id="totalMessages">—</strong>
+                </div>
+            </article>
+        </div>
+
+        <section class="messages-panel">
+            <div class="messages-heading">
+                <div>
+                    <p class="small-title">Inbox</p>
+                    <h2>Messages</h2>
+                </div>
+                <button class="mini-btn" id="refreshMessages" type="button">
+                    <i class="fas fa-rotate"></i> Refresh
+                </button>
             </div>
-        </div>
-        <div class="hero-image-wrap">
-            <div class="image-frame"></div>
-            <img src="assets/mohamed.png" alt="Mohamed Abdelrhman profile photo" class="hero-image">
-        </div>
-    </div>
-</section>
+
+            <div id="messagesStatus" class="messages-status" role="status">Loading messages...</div>
+            <div id="messagesList" class="messages-list"></div>
+        </section>
+    </section>
 </main>
+
 <footer>
     <p>© <span id="year"></span> Mohamed Abdelrhman. All rights reserved.</p>
 </footer>
@@ -67,5 +106,6 @@
 
 <script type="module" src="js/main.js"></script>
 <script type="module" src="js/auth.js"></script>
+<script type="module" src="js/dashboard.js"></script>
 </body>
 </html>

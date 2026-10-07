@@ -18,7 +18,7 @@
         <span></span><span></span><span></span>
     </button>
     <nav id="mainNav">
-        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="index.html" class="nav-link">Home</a>
         <a href="about.html" class="nav-link">About</a>
         <a href="portfolio.html" class="nav-link">Projects</a>
         <a href="contact.html" class="nav-link active">Contact</a>
@@ -49,6 +49,10 @@
                 <input type="email" id="contactEmail" placeholder="Your email">
                 <small class="error" id="contactEmailError"></small>
             </label>
+            <label>Subject
+                <input type="text" id="contactSubject" placeholder="Subject">
+                <small class="error" id="contactSubjectError"></small>
+            </label>
             <label>Message
                 <textarea id="contactMessage" rows="5" placeholder="Your message"></textarea>
                 <small class="error" id="contactMessageError"></small>
@@ -66,5 +70,6 @@
 
 <script type="module" src="js/main.js"></script>
 <script type="module" src="js/auth.js"></script>
+<script type="module" src="js/contact.js"></script>
 </body>
 </html>

@@ -1,7 +1,17 @@
 FIREBASE SETUP
-1. Open Firebase Console and create/open your project.
-2. Enable Authentication > Sign-in method > Email/Password.
-3. Create Firestore Database.
-4. Register your web app and copy its Firebase configuration.
-5. Replace the placeholder values in js/firebase.js.
-6. Open the project through a local web server (not file://), for example VS Code Live Server.
+
+1. Use the existing Firebase project. Do NOT create a new Firebase project.
+2. Keep the existing Firebase configuration in js/firebase.js.
+3. Enable Authentication > Sign-in method > Email/Password.
+4. Make sure Firestore Database is enabled.
+5. Deploy firebase/firestore.rules in the existing Firebase project.
+6. In firebase/firestore.rules replace YOUR_OWNER_UID with the Firebase Authentication UID of the portfolio owner.
+7. The Contact form writes public messages to the messages collection. Only the owner UID can read those messages.
+8. Do not put a Firebase Admin SDK key, service-account JSON, private key, or password in frontend files.
+9. Run the site through a local web server such as VS Code Live Server. Do not open the HTML files with file://.
+
+Important:
+- A user can create an account and enter dashboard.html.
+- The dashboard shows that signed-in user's Firebase Authentication information.
+- Message reading is separately protected by Firestore Rules and is available only to YOUR_OWNER_UID.
+- Total Users is intentionally not queried from the browser because exposing all user records is not a safe frontend pattern.

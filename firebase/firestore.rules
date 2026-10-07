@@ -1,0 +1,47 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Replace this value with the Firebase Authentication UID of the portfolio owner.
+    // Never put a password, service-account key, or Admin SDK credential in frontend code.
+    function isOwner() {
+      return request.auth != null
+        && request.auth.uid == "YOUR_OWNER_UID";
+    }
+
+    match /users/{userId} {
+      allow create: if request.auth != null
+        && request.auth.uid == userId;
+      allow read: if request.auth != null
+        && request.auth.uid == userId;
+      allow update: if request.auth != null
+        && request.auth.uid == userId;
+      allow delete: if false;
+    }
+
+    match /messages/{messageId} {
+      // Public Contact form can create a message, but cannot read/update/delete messages.
+      allow create: if request.resource.data.keys().hasOnly([
+        "name", "email", "subject", "message", "date", "time", "timestamp"
+      ])
+        && request.resource.data.name is string
+        && request.resource.data.email is string
+        && request.resource.data.subject is string
+        && request.resource.data.message is string
+        && request.resource.data.date is string
+        && request.resource.data.time is string
+        && request.resource.data.timestamp == request.time
+        && request.resource.data.name.size() >= 2
+        && request.resource.data.name.size() <= 120
+        && request.resource.data.email.size() >= 5
+        && request.resource.data.email.size() <= 200
+        && request.resource.data.subject.size() >= 2
+        && request.resource.data.subject.size() <= 200
+        && request.resource.data.message.size() >= 10
+        && request.resource.data.message.size() <= 5000;
+
+      allow read: if isOwner();
+      allow update, delete: if isOwner();
+    }
+  }
+}
