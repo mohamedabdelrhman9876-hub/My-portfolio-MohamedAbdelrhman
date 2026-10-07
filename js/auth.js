@@ -6,11 +6,11 @@ import {
     onAuthStateChanged,
     sendPasswordResetEmail,
     updateProfile
-} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 import {
     doc,
     setDoc
-} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 const publicPages = ["index.html", "login.html", "register.html", ""];
 const currentPage = window.location.pathname.split("/").pop();

@@ -85,58 +85,6 @@ if (contactForm) {
     });
 }
 
-const signupForm = document.getElementById("signupForm");
-if (signupForm) {
-    signupForm.addEventListener("submit", event => {
-        event.preventDefault();
-        const name = document.getElementById("signupName").value.trim();
-        const email = document.getElementById("signupEmail").value.trim().toLowerCase();
-        const password = document.getElementById("signupPassword").value;
-        const confirm = document.getElementById("signupConfirm").value;
-
-        if (name.length < 2) return showToast("Please enter your full name.");
-        if (!validEmail(email)) return showToast("Please enter a valid email.");
-        if (password.length < 6) return showToast("Password must be at least 6 characters.");
-        if (password !== confirm) return showToast("Passwords do not match.");
-
-        localStorage.setItem("portfolioUser", JSON.stringify({
-            name, email, password, createdAt: new Date().toISOString()
-        }));
-        signupForm.reset();
-        showToast("Account created! You can now log in.");
-        setTimeout(() => window.location.href = "login.html", 700);
-    });
-}
-
-const loginForm = document.getElementById("loginForm");
-if (loginForm) {
-    loginForm.addEventListener("submit", event => {
-        event.preventDefault();
-        const email = document.getElementById("loginEmail").value.trim().toLowerCase();
-        const password = document.getElementById("loginPassword").value;
-        const savedUser = JSON.parse(localStorage.getItem("portfolioUser"));
-
-        if (!savedUser) return showToast("No account found. Please sign up first.");
-        if (email !== savedUser.email || password !== savedUser.password) {
-            return showToast("Email or password is incorrect.");
-        }
-
-        localStorage.setItem("portfolioLoggedIn", "true");
-        loginForm.reset();
-        showToast(`Welcome back, ${savedUser.name}!`);
-        setTimeout(() => window.location.href = "dashboard.html", 700);
-    });
-}
-
-const forgotPassword = document.getElementById("forgotPassword");
-if (forgotPassword) {
-    forgotPassword.addEventListener("click", event => {
-        event.preventDefault();
-        const savedUser = JSON.parse(localStorage.getItem("portfolioUser"));
-        showToast(savedUser ? `Password reset would be sent to ${savedUser.email}.` : "Create an account first.");
-    });
-}
-
 const subscribeForm = document.getElementById("subscribeForm");
 if (subscribeForm) {
     subscribeForm.addEventListener("submit", event => {
