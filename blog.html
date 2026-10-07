@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohamed Abdelrhman - Frontend Developer Portfolio">
+    <title>Mohamed Abdelrhman | Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="navbar">
+    <a class="logo" href="dashboard.html">portfolio.</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+    <nav id="mainNav">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="portfolio.html" class="nav-link">Projects</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="blog.html" class="nav-link active">Blog</a>
+        <a href="login.html" class="nav-link" data-auth="login">Login</a>
+        <a href="register.html" class="nav-link signup-nav" data-auth="register">Sign up</a>
+        <a href="#" class="nav-link logout-nav" id="logoutLink" style="display:none;">Logout</a>
+        <span class="user-nav" id="userNav" style="display:none;"></span>
+    </nav>
+</header>
+<main>
+<section class="page section blog-section">
+    <div class="section-heading">
+        <p class="small-title">My Articles & Tutorials</p>
+        <h2>Blog</h2>
+        <p>Tips, tutorials and insights about web development, programming and technology.</p>
+    </div>
+    <div class="blog-grid">
+        <article class="blog-card">
+            <img src="assets/js.jpg" alt="JavaScript article">
+            <div>
+                <h3>How I Started Learning JavaScript</h3>
+                <p>My journey from zero to building real projects with JavaScript.</p>
+                <a href="blog.html" class="read-more">Read More ↗</a>
+            </div>
+        </article>
+        <article class="blog-card">
+            <img src="assets/html css.jpg" alt="HTML and CSS article">
+            <div>
+                <h3>HTML & CSS Basics for Beginners</h3>
+                <p>A simple guide to understanding the basics of HTML and CSS.</p>
+                <a href="blog.html" class="read-more">Read More ↗</a>
+            </div>
+        </article>
+    </div>
+    <div class="subscribe-box">
+        <div>
+            <strong>✉ Stay Updated</strong>
+            <p>Subscribe to get the latest articles and tutorials delivered to your inbox.</p>
+        </div>
+        <form id="subscribeForm">
+            <input id="subscribeEmail" type="email" placeholder="Your email address" required>
+            <button class="mini-btn" type="submit">Subscribe</button>
+        </form>
+    </div>
+</section>
+</main>
+<footer>
+    <p>© <span id="year"></span> Mohamed Abdelrhman. All rights reserved.</p>
+</footer>
+
+<div id="toast" class="toast" role="status"></div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

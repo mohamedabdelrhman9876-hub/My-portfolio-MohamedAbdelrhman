@@ -837,3 +837,15 @@ footer{
         flex-direction:column;
     }
 }
+
+/* Multi-page navigation additions */
+.logout-nav{
+    border:1px solid #d9f8ff;
+    border-radius:3px;
+    padding:4px 8px;
+}
+
+.user-nav{
+    color:#d9f8ff;
+    font-size:10px;
+}

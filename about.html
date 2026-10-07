@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohamed Abdelrhman - Frontend Developer Portfolio">
+    <title>Mohamed Abdelrhman | About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="navbar">
+    <a class="logo" href="dashboard.html">portfolio.</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+    <nav id="mainNav">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="portfolio.html" class="nav-link">Projects</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="login.html" class="nav-link" data-auth="login">Login</a>
+        <a href="register.html" class="nav-link signup-nav" data-auth="register">Sign up</a>
+        <a href="#" class="nav-link logout-nav" id="logoutLink" style="display:none;">Logout</a>
+        <span class="user-nav" id="userNav" style="display:none;"></span>
+    </nav>
+</header>
+<main>
+<section class="page section">
+    <div class="about-top">
+        <div class="about-photo">
+            <img src="assets/mohamed1.png" alt="Mohamed Abdelrhman">
+        </div>
+        <div class="about-content">
+            <p class="small-title">About Me</p>
+            <h2>Who I Am</h2>
+            <p>
+                I'm Mohamed Abdelrhman, a passionate Frontend Developer with a strong
+                interest in building modern, user-friendly and responsive websites.
+                I enjoy turning ideas into real projects and continuously learning
+                new technologies to improve my skills.
+            </p>
+            <div class="quick-icons">
+                <a href="contact.html" aria-label="Contact">✉</a>
+                <a href="portfolio.html" aria-label="Projects">▣</a>
+                <a href="blog.html" aria-label="Blog">▤</a>
+            </div>
+        </div>
+    </div>
+    <div class="skills-area">
+        <h2>What I Know</h2>
+        <div class="skills-grid">
+            <div class="skill-card"><div class="skill-icon html-icon"><i class="fa-brands fa-html5" style="color: rgb(194, 1, 37);"></i></div><strong>HTML</strong></div>
+            <div class="skill-card"><div class="skill-icon css-icon"><i class="fa-brands fa-css3-alt" style="color: rgb(41, 128, 185);"></i></div><strong>CSS</strong></div>
+            <div class="skill-card"><div class="skill-icon js-icon"><i class="fa-brands fa-js" style="color: rgb(121, 113, 70);"></i></div><strong>JavaScript</strong></div>
+            <div class="skill-card"><div class="skill-icon git-icon"><i class="fa-brands fa-git" style="color: rgb(225, 100, 80);"></i></div><strong>Git</strong></div>
+            <div class="skill-card"><div class="skill-icon github-icon"><i class="fa-brands fa-github" style="color: rgb(208, 5, 5);"></i></div><strong>GitHub</strong></div>
+            <div class="skill-card"><div class="skill-icon design-icon"><i class="fa-brands fa-paint-brush" style="color: rgb(128, 128, 128);"></i></div><strong>Design</strong></div>
+        </div>
+    </div>
+</section>
+</main>
+<footer>
+    <p>© <span id="year"></span> Mohamed Abdelrhman. All rights reserved.</p>
+</footer>
+
+<div id="toast" class="toast" role="status"></div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

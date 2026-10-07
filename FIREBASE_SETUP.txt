@@ -1,0 +1,7 @@
+FIREBASE SETUP
+1. Open Firebase Console and create/open your project.
+2. Enable Authentication > Sign-in method > Email/Password.
+3. Create Firestore Database.
+4. Register your web app and copy its Firebase configuration.
+5. Replace the placeholder values in js/firebase.js.
+6. Open the project through a local web server (not file://), for example VS Code Live Server.

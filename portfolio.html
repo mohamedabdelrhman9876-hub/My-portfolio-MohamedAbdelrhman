@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohamed Abdelrhman - Frontend Developer Portfolio">
+    <title>Mohamed Abdelrhman | Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="navbar">
+    <a class="logo" href="dashboard.html">portfolio.</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+    <nav id="mainNav">
+        <a href="dashboard.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="portfolio.html" class="nav-link active">Projects</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="login.html" class="nav-link" data-auth="login">Login</a>
+        <a href="register.html" class="nav-link signup-nav" data-auth="register">Sign up</a>
+        <a href="#" class="nav-link logout-nav" id="logoutLink" style="display:none;">Logout</a>
+        <span class="user-nav" id="userNav" style="display:none;"></span>
+    </nav>
+</header>
+<main>
+<section class="page section projects-section">
+    <div class="section-heading">
+        <p class="small-title">My Work</p>
+        <h2>projects</h2>
+    </div>
+    <div class="projects-grid">
+        <article class="project-card">
+            <img src="assets/coucleater.jpg" alt="Calculator project">
+            <div class="project-content">
+                <h3>A Calculator</h3>
+                <p>A responsive calculator built with HTML, CSS and JavaScript.</p>
+                <div class="card-actions">
+                    <a href="contact.html" class="mini-btn" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    <a href="https://github.com/" target="_blank" rel="noopener" class="mini-btn dark" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </article>
+        <article class="project-card">
+            <img src="assets/list.jpg" alt="Online order list project">
+            <div class="project-content">
+                <h3>Online Order List</h3>
+                <p>A small online order interface with a clean and responsive layout.</p>
+                <div class="card-actions">
+                    <a href="contact.html" class="mini-btn" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    <a href="https://github.com/" target="_blank" rel="noopener" class="mini-btn dark" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </article>
+        <article class="project-card">
+            <img src="assets/treavil.jpeg" alt="Travel landing page project">
+            <div class="project-content">
+                <h3>Travel Landing Page</h3>
+                <p>A modern landing page concept focused on visual presentation.</p>
+                <div class="card-actions">
+                    <a href="contact.html" class="mini-btn" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    <a href="https://github.com/" target="_blank" rel="noopener" class="mini-btn dark" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </article>
+        <article class="project-card">
+            <img src="assets/alight.jpeg" alt="Digital tech training project">
+            <div class="project-content">
+                <h3>Digital Tech Training</h3>
+                <p>A promotional interface for a digital technology training idea.</p>
+                <div class="card-actions">
+                    <a href="contact.html" class="mini-btn" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    <a href="https://github.com/" target="_blank" rel="noopener" class="mini-btn dark" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+</main>
+<footer>
+    <p>© <span id="year"></span> Mohamed Abdelrhman. All rights reserved.</p>
+</footer>
+
+<div id="toast" class="toast" role="status"></div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

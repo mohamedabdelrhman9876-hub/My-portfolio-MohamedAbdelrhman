@@ -1,0 +1,11 @@
+Navigation is connected with real HTML pages:
+Home -> dashboard.html
+About -> about.html
+Projects -> portfolio.html
+Contact -> contact.html
+Blog -> blog.html
+Login -> login.html
+Sign up -> register.html
+
+Open index.html or dashboard.html.
+For JavaScript modules/Firebase work, run the folder with VS Code Live Server or another local web server.
