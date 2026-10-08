@@ -33,69 +33,141 @@
 </header>
 
 <main class="dashboard-page">
-    <section class="dashboard-shell">
-        <div class="dashboard-heading">
-            <div>
-                <p class="small-title">Private Area</p>
-                <h1>Dashboard</h1>
-                <p>Welcome, <strong id="dashboardUserName">User</strong></p>
-            </div>
-            <a href="index.html" class="btn btn-outline">View Portfolio</a>
-        </div>
+    <div class="dashboard-layout">
+        <aside class="dashboard-sidebar" aria-label="Dashboard sidebar">
+            <div class="sidebar-brand">portfolio.</div>
+            <nav class="sidebar-nav">
+                <a href="#dashboard-home" class="sidebar-link active">Dashboard</a>
+                <a href="#blog" class="sidebar-link">Blog</a>
+                <a href="#posts" class="sidebar-link">Posts</a>
+                <a href="#messages" class="sidebar-link">Messages</a>
+                <a href="#users" class="sidebar-link">Users</a>
+                <a href="#" class="sidebar-link logout-link">Logout</a>
+            </nav>
+        </aside>
 
-        <div class="dashboard-cards">
-            <article class="dashboard-card user-card">
-                <div class="dashboard-card-icon"><i class="fas fa-user"></i></div>
-                <div>
-                    <span>Name</span>
-                    <strong id="profileName">—</strong>
+        <section class="dashboard-shell">
+            <section id="dashboard-home" class="dashboard-panel visible">
+                <div class="dashboard-heading">
+                    <div>
+                        <p class="small-title">Private Area</p>
+                        <h1>Dashboard</h1>
+                        <p>Welcome, <strong id="dashboardUserName">User</strong></p>
+                    </div>
+                    <a href="index.html" class="btn btn-outline">View Portfolio</a>
                 </div>
-            </article>
-            <article class="dashboard-card user-card">
-                <div class="dashboard-card-icon"><i class="fas fa-envelope"></i></div>
-                <div>
-                    <span>Email</span>
-                    <strong id="profileEmail">—</strong>
-                </div>
-            </article>
-            <article class="dashboard-card user-card">
-                <div class="dashboard-card-icon"><i class="fas fa-fingerprint"></i></div>
-                <div>
-                    <span>User ID</span>
-                    <strong id="profileUid">—</strong>
-                </div>
-            </article>
-            <article class="dashboard-card user-card">
-                <div class="dashboard-card-icon"><i class="fas fa-calendar"></i></div>
-                <div>
-                    <span>Account Created</span>
-                    <strong id="profileCreatedAt">—</strong>
-                </div>
-            </article>
-            <article class="dashboard-card total-card">
-                <div class="dashboard-card-icon"><i class="fas fa-inbox"></i></div>
-                <div>
-                    <span>Total Messages</span>
-                    <strong id="totalMessages">—</strong>
-                </div>
-            </article>
-        </div>
 
-        <section class="messages-panel">
-            <div class="messages-heading">
-                <div>
-                    <p class="small-title">Inbox</p>
-                    <h2>Messages</h2>
+                <div class="dashboard-cards">
+                    <article class="dashboard-card user-card">
+                        <div class="dashboard-card-icon"><i class="fas fa-user"></i></div>
+                        <div>
+                            <span>Name</span>
+                            <strong id="profileName">—</strong>
+                        </div>
+                    </article>
+                    <article class="dashboard-card user-card">
+                        <div class="dashboard-card-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <span>Email</span>
+                            <strong id="profileEmail">—</strong>
+                        </div>
+                    </article>
+                    <article class="dashboard-card user-card">
+                        <div class="dashboard-card-icon"><i class="fas fa-fingerprint"></i></div>
+                        <div>
+                            <span>User ID</span>
+                            <strong id="profileUid">—</strong>
+                        </div>
+                    </article>
+                    <article class="dashboard-card user-card">
+                        <div class="dashboard-card-icon"><i class="fas fa-calendar"></i></div>
+                        <div>
+                            <span>Account Created</span>
+                            <strong id="profileCreatedAt">—</strong>
+                        </div>
+                    </article>
+                    <article class="dashboard-card total-card">
+                        <div class="dashboard-card-icon"><i class="fas fa-inbox"></i></div>
+                        <div>
+                            <span>Total Messages</span>
+                            <strong id="totalMessages">—</strong>
+                        </div>
+                    </article>
                 </div>
-                <button class="mini-btn" id="refreshMessages" type="button">
-                    <i class="fas fa-rotate"></i> Refresh
-                </button>
-            </div>
+            </section>
 
-            <div id="messagesStatus" class="messages-status" role="status">Loading messages...</div>
-            <div id="messagesList" class="messages-list"></div>
+            <section id="blog" class="dashboard-panel">
+                <div class="content-panel posts-panel">
+                    <div class="messages-heading">
+                        <div>
+                            <p class="small-title">My Articles</p>
+                            <h2>Blog</h2>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-blog-grid">
+                        <article class="blog-card">
+                            <img src="assets/js.jpg" alt="JavaScript article">
+                            <div>
+                                <h3>How I Started Learning JavaScript</h3>
+                                <p>My journey from zero to building real projects with JavaScript.</p>
+                                <a href="blog.html" class="read-more">Read More ↗</a>
+                            </div>
+                        </article>
+                        <article class="blog-card">
+                            <img src="assets/html css.jpg" alt="HTML and CSS article">
+                            <div>
+                                <h3>HTML & CSS Basics for Beginners</h3>
+                                <p>A simple guide to understanding the basics of HTML and CSS.</p>
+                                <a href="blog.html" class="read-more">Read More ↗</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="posts" class="dashboard-panel">
+                <div class="content-panel posts-panel">
+                    <div class="messages-heading">
+                        <div>
+                            <p class="small-title">Latest</p>
+                            <h2>Posts</h2>
+                        </div>
+                    </div>
+                    <div id="postsList" class="posts-list">Loading posts...</div>
+                </div>
+            </section>
+
+            <section id="messages" class="dashboard-panel">
+                <div class="messages-panel">
+                    <div class="messages-heading">
+                        <div>
+                            <p class="small-title">Inbox</p>
+                            <h2>Messages</h2>
+                        </div>
+                        <button class="mini-btn" id="refreshMessages" type="button">
+                            <i class="fas fa-rotate"></i> Refresh
+                        </button>
+                    </div>
+
+                    <div id="messagesStatus" class="messages-status" role="status">Loading messages...</div>
+                    <div id="messagesList" class="messages-list"></div>
+                </div>
+            </section>
+
+            <section id="users" class="dashboard-panel">
+                <div class="content-panel posts-panel">
+                    <div class="messages-heading">
+                        <div>
+                            <p class="small-title">Members</p>
+                            <h2>Users</h2>
+                        </div>
+                    </div>
+                    <div id="usersList" class="users-list">Loading users...</div>
+                </div>
+            </section>
         </section>
-    </section>
+    </div>
 </main>
 
 <footer>
@@ -106,6 +178,5 @@
 
 <script type="module" src="js/main.js"></script>
 <script type="module" src="js/auth.js"></script>
-<script type="module" src="js/dashboard.js"></script>
 </body>
 </html>
