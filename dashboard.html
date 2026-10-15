@@ -104,7 +104,6 @@
                             <h2>Blog</h2>
                         </div>
                     </div>
-
                     <div class="dashboard-blog-grid">
                         <article class="blog-card">
                             <img src="assets/js.jpg" alt="JavaScript article">
@@ -123,6 +122,17 @@
                             </div>
                         </article>
                     </div>
+
+                    <div class="subscribe-box" style="margin-top: 24px;">
+                        <div>
+                            <strong>✉ Stay Updated</strong>
+                            <p>Subscribe to get the latest articles and tutorials delivered to your inbox.</p>
+                        </div>
+                        <form id="subscribeForm">
+                            <input id="subscribeEmail" type="email" placeholder="Your email address" required>
+                            <button class="mini-btn" type="submit">Subscribe</button>
+                        </form>
+                    </div>
                 </div>
             </section>
 
@@ -134,7 +144,7 @@
                             <h2>Posts</h2>
                         </div>
                     </div>
-                    <div id="postsList" class="posts-list">Loading posts...</div>
+                    <div id="postsList" class="posts-list">No additional posts.</div>
                 </div>
             </section>
 
@@ -163,7 +173,7 @@
                             <h2>Users</h2>
                         </div>
                     </div>
-                    <div id="usersList" class="users-list">Loading users...</div>
+                    <div id="usersList" class="users-list">Admin session active.</div>
                 </div>
             </section>
         </section>
@@ -178,5 +188,7 @@
 
 <script type="module" src="js/main.js"></script>
 <script type="module" src="js/auth.js"></script>
+<script type="module" src="js/dashboard.js"></script>
+<script type="module" src="js/blog.js"></script>
 </body>
 </html>

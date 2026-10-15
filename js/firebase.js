@@ -17,3 +17,22 @@ export const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+export const OWNER_UID = "YOUR_OWNER_UID";
+
+export function getOwnerUid() {
+  try {
+    return localStorage.getItem("portfolioOwnerUid") || OWNER_UID;
+  } catch (error) {
+    return OWNER_UID;
+  }
+}
+
+export function isFirebaseConfigured() {
+  return Boolean(
+    firebaseConfig.apiKey &&
+    firebaseConfig.authDomain &&
+    firebaseConfig.projectId &&
+    firebaseConfig.appId &&
+    firebaseConfig.apiKey !== "YOUR_API_KEY"
+  );
+}

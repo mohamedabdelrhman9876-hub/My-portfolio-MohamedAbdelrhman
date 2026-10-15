@@ -2,35 +2,20 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Replace this value with the Firebase Authentication UID of the portfolio owner.
-    // Never put a password, service-account key, or Admin SDK credential in frontend code.
-    function isOwner() {
-      return request.auth != null
-        && request.auth.uid == "YOUR_OWNER_UID";
+    function isAuthenticated() {
+      return request.auth != null;
     }
 
-    match /users/{userId} {
-      allow create: if request.auth != null
-        && request.auth.uid == userId;
-      allow read: if request.auth != null
-        && request.auth.uid == userId;
-      allow update: if request.auth != null
-        && request.auth.uid == userId;
-      allow delete: if false;
-    }
-
-    match /messages/{messageId} {
-      // Public Contact form can create a message, but cannot read/update/delete messages.
-      allow create: if request.resource.data.keys().hasOnly([
-        "name", "email", "subject", "message", "date", "time", "timestamp"
+    function isValidMessage() {
+      return request.resource.data.keys().hasOnly([
+        "name", "email", "subject", "message", "read", "createdAt"
       ])
         && request.resource.data.name is string
         && request.resource.data.email is string
         && request.resource.data.subject is string
         && request.resource.data.message is string
-        && request.resource.data.date is string
-        && request.resource.data.time is string
-        && request.resource.data.timestamp == request.time
+        && request.resource.data.read is bool
+        && request.resource.data.createdAt is timestamp
         && request.resource.data.name.size() >= 2
         && request.resource.data.name.size() <= 120
         && request.resource.data.email.size() >= 5
@@ -39,9 +24,19 @@ service cloud.firestore {
         && request.resource.data.subject.size() <= 200
         && request.resource.data.message.size() >= 10
         && request.resource.data.message.size() <= 5000;
+    }
 
-      allow read: if isOwner();
-      allow update, delete: if isOwner();
+    match /users/{userId} {
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      allow read: if isAuthenticated() && request.auth.uid == userId;
+      allow update: if isAuthenticated() && request.auth.uid == userId;
+      allow delete: if false;
+    }
+
+    match /messages/{messageId} {
+      allow create: if isValidMessage();
+      allow read: if isAuthenticated();
+      allow update, delete: if isAuthenticated();
     }
   }
 }
