@@ -13,7 +13,7 @@
 </head>
 <body>
 <header class="navbar">
-    <a class="logo" href="dashboard.html">portfolio.</a>
+    <a class="logo" href="index.html">portfolio.</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
         <span></span><span></span><span></span>
     </button>
@@ -37,15 +37,18 @@
         <form id="loginForm" novalidate>
             <label>✉ Email address
                 <input type="email" id="loginEmail" placeholder="Enter your email">
+                <small class="error" id="loginEmailError"></small>
             </label>
             <label>🔒 Password
                 <input type="password" id="loginPassword" placeholder="Enter your password">
+                <small class="error" id="loginPasswordError"></small>
             </label>
             <div class="auth-options">
                 <a href="#" id="forgotPassword" aria-label="Forgot password?">
                     <i class="fas fa-question-circle"></i>
                 </a>
             </div>
+            <button type="button" class="btn btn-outline full" id="googleLoginBtn">Continue with Google</button>
             <button class="btn btn-primary full" type="submit">Login →</button>
         </form>
         <p>Don't have an account? <a href="register.html" aria-label="Sign up">Sign up</a></p>

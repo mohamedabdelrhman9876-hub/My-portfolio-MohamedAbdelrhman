@@ -34,11 +34,15 @@
 
 <main class="dashboard-page">
     <div class="dashboard-layout">
-        <aside class="dashboard-sidebar" aria-label="Dashboard sidebar">
+        <button class="dashboard-sidebar-toggle" id="dashboardSidebarToggle" aria-label="Toggle dashboard sidebar" aria-expanded="true">
+            <span></span><span></span><span></span>
+        </button>
+
+        <aside class="dashboard-sidebar sidebar-open" aria-label="Dashboard sidebar">
             <div class="sidebar-brand">portfolio.</div>
             <nav class="sidebar-nav">
                 <a href="#dashboard-home" class="sidebar-link active">Dashboard</a>
-                <a href="#blog" class="sidebar-link">Blog</a>
+                <a href="#blog" class="sidebar-link blog-link">Blog</a>
                 <a href="#posts" class="sidebar-link">Posts</a>
                 <a href="#messages" class="sidebar-link">Messages</a>
                 <a href="#users" class="sidebar-link">Users</a>
@@ -98,40 +102,44 @@
 
             <section id="blog" class="dashboard-panel">
                 <div class="content-panel posts-panel">
-                    <div class="messages-heading">
-                        <div>
-                            <p class="small-title">My Articles</p>
-                            <h2>Blog</h2>
-                        </div>
-                    </div>
-                    <div class="dashboard-blog-grid">
-                        <article class="blog-card">
-                            <img src="assets/js.jpg" alt="JavaScript article">
-                            <div>
-                                <h3>How I Started Learning JavaScript</h3>
-                                <p>My journey from zero to building real projects with JavaScript.</p>
-                                <a href="blog.html" class="read-more">Read More ↗</a>
-                            </div>
-                        </article>
-                        <article class="blog-card">
-                            <img src="assets/html css.jpg" alt="HTML and CSS article">
-                            <div>
-                                <h3>HTML & CSS Basics for Beginners</h3>
-                                <p>A simple guide to understanding the basics of HTML and CSS.</p>
-                                <a href="blog.html" class="read-more">Read More ↗</a>
-                            </div>
-                        </article>
+                    <div class="section-heading" style="margin-bottom: 0;">
+                        <p class="small-title">My Articles & Tutorials</p>
+                        <h2>Blog</h2>
+                        <p>Tips, tutorials and insights about web development, programming and technology.</p>
                     </div>
 
-                    <div class="subscribe-box" style="margin-top: 24px;">
-                        <div>
-                            <strong>✉ Stay Updated</strong>
-                            <p>Subscribe to get the latest articles and tutorials delivered to your inbox.</p>
+                    <div id="dashboardBlogGrid" class="dashboard-blog-grid" data-static-blog="true" style="display: grid; gap: 20px; margin-top: 20px;">
+                        <div class="blog-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+                            <article class="blog-card">
+                                <img src="assets/js.jpg" alt="JavaScript article">
+                                <div>
+                                    <h3>How I Started Learning JavaScript</h3>
+                                    <p>My journey from zero to building real projects with JavaScript.</p>
+                                    <a href="https://mohamedcoding.blogspot.com/2026/07/homework_0800651697.html" class="read-more">Read More ↗</a>
+                                </div>
+                            </article>
+
+                            <article class="blog-card">
+                                <img src="assets/html css.jpg" alt="HTML and CSS article">
+                                <div>
+                                    <h3>HTML & CSS Basics for Beginners</h3>
+                                    <p>A simple guide to understanding the basics of HTML and CSS.</p>
+                                    <a href="https://mohamedcoding.blogspot.com/2026/08/doctype-html-html-lang-en-head-meta_01264652640.html" class="read-more">Read More ↗</a>
+                                </div>
+                            </article>
                         </div>
-                        <form id="subscribeForm">
-                            <input id="subscribeEmail" type="email" placeholder="Your email address" required>
-                            <button class="mini-btn" type="submit">Subscribe</button>
-                        </form>
+
+                        <div class="subscribe-box" style="margin-top: 0;">
+                            <div>
+                                <strong>✉ Stay Updated</strong>
+                                <p>Subscribe to get the latest articles and tutorials delivered to your inbox.</p>
+                            </div>
+                            <form id="subscribeForm" novalidate>
+                                <input id="subscribeEmail" type="email" placeholder="Your email address" required>
+                                <button class="mini-btn" type="submit">Subscribe</button>
+                            </form>
+                            <small class="error" id="subscribeEmailError"></small>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -144,7 +152,31 @@
                             <h2>Posts</h2>
                         </div>
                     </div>
-                    <div id="postsList" class="posts-list">No additional posts.</div>
+
+                    <form id="postForm" class="post-form" novalidate>
+                        <input type="hidden" id="postId">
+                        <div class="form-grid">
+                            <label>Post title
+                                <input id="postTitle" type="text" placeholder="Enter blog title">
+                                <small class="error" id="postTitleError"></small>
+                            </label>
+                        </div>
+                        <label>Excerpt
+                            <textarea id="postExcerpt" rows="2" placeholder="Short summary"></textarea>
+                            <small class="error" id="postExcerptError"></small>
+                        </label>
+                        <label>Content
+                            <textarea id="postContent" rows="5" placeholder="Write your article content"></textarea>
+                            <small class="error" id="postContentError"></small>
+                        </label>
+                        <small class="error" id="postFormError"></small>
+                        <div class="form-actions">
+                            <button class="mini-btn" id="savePostBtn" type="submit">Save Post</button>
+                            <button class="mini-btn dark" id="cancelEditPost" type="button" style="display:none;">Cancel</button>
+                        </div>
+                    </form>
+
+                    <div id="postsList" class="posts-list" style="margin-top: 20px;"></div>
                 </div>
             </section>
 

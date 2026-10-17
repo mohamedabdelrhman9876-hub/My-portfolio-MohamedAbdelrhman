@@ -12,6 +12,31 @@
     display:flex;
     align-items:flex-start;
     gap:20px;
+    position:relative;
+}
+
+.dashboard-sidebar-toggle{
+    display:none;
+    position:absolute;
+    top:10px;
+    left:10px;
+    z-index:20;
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:8px;
+    background:#0a234f;
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+    cursor:pointer;
+}
+
+.dashboard-sidebar-toggle span{
+    display:block;
+    width:20px;
+    height:2px;
+    background:#fff;
+    margin:5px auto;
+    border-radius:4px;
 }
 
 .dashboard-sidebar{
@@ -22,6 +47,7 @@
     border-radius:12px;
     background:rgba(10,23,70,.92);
     box-shadow:0 14px 35px rgba(0,0,0,.12);
+    transition:transform .2s ease, opacity .2s ease;
 }
 
 .sidebar-brand{
@@ -161,6 +187,56 @@
 
 .posts-panel{
     margin-bottom:20px;
+}
+
+.post-form{
+    display:grid;
+    gap:12px;
+    padding:18px;
+    border:1px solid #075b83;
+    border-radius:10px;
+    background:#081943;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:12px;
+}
+
+.post-form label{
+    display:block;
+    color:#dfe9ff;
+    font-size:9px;
+}
+
+.post-form input,
+.post-form textarea{
+    width:100%;
+    margin-top:5px;
+    background:#07328c;
+    border:1px solid transparent;
+    border-radius:5px;
+    padding:9px 11px;
+    color:#fff;
+    font-size:10px;
+}
+
+.post-form textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.post-form input:focus,
+.post-form textarea:focus{
+    border-color:#48c5ff;
+    outline:none;
+}
+
+.form-actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
 }
 
 .dashboard-blog-grid,
@@ -316,11 +392,25 @@
 @media (max-width:1000px){
     .dashboard-layout{
         flex-direction:column;
+        padding-top:52px;
+    }
+
+    .dashboard-sidebar-toggle{
+        display:block;
     }
 
     .dashboard-sidebar{
         width:100%;
         flex-basis:auto;
+        display:none;
+        transform:translateY(-8px);
+        opacity:0;
+    }
+
+    .dashboard-sidebar.sidebar-open{
+        display:block;
+        transform:translateY(0);
+        opacity:1;
     }
 
     .sidebar-nav{
@@ -350,6 +440,7 @@
         grid-template-columns:repeat(2,1fr);
     }
 
+    .form-grid,
     .dashboard-blog-grid{
         grid-template-columns:1fr;
     }

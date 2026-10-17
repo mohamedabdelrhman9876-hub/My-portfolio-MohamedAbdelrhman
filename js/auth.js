@@ -3,7 +3,9 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     updateProfile,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    GoogleAuthProvider,
+    signInWithPopup
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 function showToast(message, isError = false) {
@@ -32,10 +34,24 @@ function showToast(message, isError = false) {
     }, 4000);
 }
 
+const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+const setFieldError = (fieldId, message = "") => {
+    const field = document.getElementById(fieldId);
+    if (field) field.textContent = message;
+};
+
+const clearFormErrors = (fieldIds) => {
+    fieldIds.forEach((fieldId) => setFieldError(fieldId, ""));
+};
+
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("loginForm");
     const signupForm = document.getElementById("signupForm");
     const forgotPasswordLink = document.getElementById("forgotPassword");
+    const googleLoginButton = document.getElementById("googleLoginBtn");
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: "select_account" });
 
     const ensureFirebaseReady = () => {
         if (window.location.protocol === "file:") {
@@ -51,6 +67,32 @@ document.addEventListener("DOMContentLoaded", () => {
         return true;
     };
 
+    const signInWithGoogle = async () => {
+        if (!ensureFirebaseReady()) return;
+
+        try {
+            const result = await signInWithPopup(auth, provider);
+            const ownerUid = getOwnerUid();
+            if (!ownerUid || ownerUid === "YOUR_OWNER_UID" || ownerUid === "DEMO_OWNER_UID") {
+                localStorage.setItem("portfolioOwnerUid", result.user.uid);
+            }
+            showToast("Google sign in successful.");
+            window.location.href = "dashboard.html";
+        } catch (error) {
+            if (error?.code === "auth/popup-closed-by-user") {
+                showToast("Google sign in was cancelled.", true);
+                return;
+            }
+
+            console.error("Google login failed:", error);
+            showToast(error.message || "Unable to sign in with Google right now.", true);
+        }
+    };
+
+    if (googleLoginButton) {
+        googleLoginButton.addEventListener("click", signInWithGoogle);
+    }
+
     if (loginForm) {
         loginForm.addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -59,12 +101,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const emailInput = document.getElementById("loginEmail");
             const passwordInput = document.getElementById("loginPassword");
+            clearFormErrors(["loginEmailError", "loginPasswordError"]);
 
             const email = emailInput.value.trim();
             const password = passwordInput.value.trim();
 
-            if (!email || !password) {
-                showToast("Please enter both email and password.", true);
+            if (!email) {
+                setFieldError("loginEmailError", "Please enter your email address.");
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                setFieldError("loginEmailError", "Please enter a valid email address.");
+                return;
+            }
+
+            if (!password) {
+                setFieldError("loginPasswordError", "Please enter your password.");
                 return;
             }
 
@@ -92,24 +145,45 @@ document.addEventListener("DOMContentLoaded", () => {
             const emailInput = document.getElementById("signupEmail");
             const passwordInput = document.getElementById("signupPassword");
             const confirmInput = document.getElementById("signupConfirm");
+            clearFormErrors(["signupNameError", "signupEmailError", "signupPasswordError", "signupConfirmError"]);
 
             const name = nameInput.value.trim();
             const email = emailInput.value.trim();
             const password = passwordInput.value.trim();
             const confirmPassword = confirmInput.value.trim();
 
-            if (!name || !email || !password || !confirmPassword) {
-                showToast("Please complete all fields.", true);
+            if (!name) {
+                setFieldError("signupNameError", "Please enter your full name.");
+                return;
+            }
+
+            if (!email) {
+                setFieldError("signupEmailError", "Please enter your email address.");
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                setFieldError("signupEmailError", "Please enter a valid email address.");
+                return;
+            }
+
+            if (!password) {
+                setFieldError("signupPasswordError", "Please enter a password.");
                 return;
             }
 
             if (password.length < 6) {
-                showToast("Password must be at least 6 characters long.", true);
+                setFieldError("signupPasswordError", "Password must be at least 6 characters long.");
+                return;
+            }
+
+            if (!confirmPassword) {
+                setFieldError("signupConfirmError", "Please confirm your password.");
                 return;
             }
 
             if (password !== confirmPassword) {
-                showToast("Passwords do not match.", true);
+                setFieldError("signupConfirmError", "Passwords do not match.");
                 return;
             }
 
@@ -147,3 +221,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+

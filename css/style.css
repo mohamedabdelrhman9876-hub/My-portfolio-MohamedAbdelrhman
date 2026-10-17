@@ -112,12 +112,9 @@ button{
 .hero{
     position:relative;
     overflow:hidden;
-    /* background:
-        radial-gradient(circle at 76% 30%,rgba(0,168,255,.15),transparent 25%),
-        linear-gradient(135deg,#050b2d,#0a1644 65%,#071036); */
-        background: url(background.jpg) no-repeat center center fixed;
-    background-size:cover;
-
+    background:
+        radial-gradient(circle at 75% 15%,rgba(0,168,255,.18),transparent 18%),
+        linear-gradient(135deg,#050b2d,#0a1644 65%,#071036);
 }
 
 .hero-grid{
@@ -325,6 +322,42 @@ button{
     text-align:center;
     font-size:20px;
     margin-bottom:30px;
+}
+
+.education-grid{
+    width:min(900px,100%);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:20px;
+}
+
+.info-card{
+    padding:24px 20px;
+    border-radius:12px;
+    border:1px solid #075b83;
+    background:rgba(10,23,70,.92);
+    box-shadow:0 14px 35px rgba(0,0,0,.12);
+}
+
+.info-label{
+    display:inline-block;
+    margin-bottom:10px;
+    color:#48c5ff;
+    font-size:9px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+}
+
+.info-card h3{
+    font-size:16px;
+    margin-bottom:8px;
+}
+
+.info-card p{
+    color:#c5d0e6;
+    font-size:10px;
+    line-height:1.7;
 }
 
 .skills-grid{
@@ -662,6 +695,14 @@ textarea:focus{
     display:flex;
     gap:7px;
     min-width:330px;
+}
+
+.subscribe-box .error{
+    display:block;
+    min-height:12px;
+    margin-top:6px;
+    font-size:8px;
+    color:#ff8190;
 }
 
 .subscribe-box input{
