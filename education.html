@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohamed Abdelrhman - Frontend Developer Portfolio - Education">
+    <title>Mohamed Abdelrhman | Education</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/education.css">
+</head>
+<body>
+<header class="navbar">
+    <a class="logo" href="index.html">portfolio.</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+    <nav id="mainNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="education.html" class="nav-link active">Education</a>
+        <a href="skills.html" class="nav-link">Skills</a>
+        <a href="portfolio.html" class="nav-link">Projects</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="login.html" class="nav-link" data-auth="login">Login</a>
+        <a href="register.html" class="nav-link signup-nav" data-auth="register">Sign up</a>
+        <a href="#" class="nav-link logout-nav" id="logoutLink" style="display:none;">Logout</a>
+        <span class="user-nav" id="userNav" style="display:none;"></span>
+    </nav>
+</header>
+<main>
+<section class="page section education-section">
+    <div class="section-heading">
+        <p class="small-title">Learning Journey</p>
+        <h2>Education & Learning Path</h2>
+        <p>My continuous learning journey in frontend development and web technologies.</p>
+    </div>
+
+    <div class="education-timeline">
+        <div class="education-card">
+            <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="edu-content">
+                <span class="edu-date">Present / Ongoing</span>
+                <h3>Frontend Development Learning Path</h3>
+                <h4>Self-Taught & Practice</h4>
+                <p>Currently learning and practicing HTML, CSS, JavaScript (building fundamental concepts), along with Git, GitHub, and basic Design principles by building small personal projects.</p>
+                <div class="edu-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    <span>Git</span>
+                    <span>GitHub</span>
+                    <span>Design</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+<footer>
+    <p>&copy; <span id="year"></span> Mohamed Abdelrhman. All rights reserved.</p>
+</footer>
+
+<div id="toast" class="toast" role="status"></div>
+
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/auth.js"></script>
+</body>
+</html>
