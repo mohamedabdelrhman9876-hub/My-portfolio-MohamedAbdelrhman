@@ -99,51 +99,41 @@
                     </article>
                 </div>
             </section>
-
-            <section id="blog" class="dashboard-panel">
-                <div class="content-panel posts-panel">
-                    <div class="section-heading" style="margin-bottom: 0;">
-                        <p class="small-title">My Articles & Tutorials</p>
-                        <h2>Blog</h2>
-                        <p>Tips, tutorials and insights about web development, programming and technology.</p>
-                    </div>
-
-                    <div id="dashboardBlogGrid" class="dashboard-blog-grid" data-static-blog="true" style="display: grid; gap: 20px; margin-top: 20px;">
-                        <div class="blog-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
-                            <article class="blog-card">
-                                <img src="assets/js.jpg" alt="JavaScript article">
-                                <div>
-                                    <h3>How I Started Learning JavaScript</h3>
-                                    <p>My journey from zero to building real projects with JavaScript.</p>
-                                    <a href="https://mohamedcoding.blogspot.com/2026/07/homework_0800651697.html" class="read-more">Read More ↗</a>
-                                </div>
-                            </article>
-
-                            <article class="blog-card">
-                                <img src="assets/html css.jpg" alt="HTML and CSS article">
-                                <div>
-                                    <h3>HTML & CSS Basics for Beginners</h3>
-                                    <p>A simple guide to understanding the basics of HTML and CSS.</p>
-                                    <a href="https://mohamedcoding.blogspot.com/2026/08/doctype-html-html-lang-en-head-meta_01264652640.html" class="read-more">Read More ↗</a>
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="subscribe-box" style="margin-top: 0;">
-                            <div>
-                                <strong>✉ Stay Updated</strong>
-                                <p>Subscribe to get the latest articles and tutorials delivered to your inbox.</p>
-                            </div>
-                            <form id="subscribeForm" novalidate>
-                                <input id="subscribeEmail" type="email" placeholder="Your email address" required>
-                                <button class="mini-btn" type="submit">Subscribe</button>
-                            </form>
-                            <small class="error" id="subscribeEmailError"></small>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+            <section id="blog" class="dashboard-panel page section blog-section">
+    <div class="section-heading">
+        <p class="small-title">My Articles & Tutorials</p>
+        <h2>Blog</h2>
+        <p>Tips, tutorials and insights about web development, programming and technology.</p>
+    </div>
+    <div class="blog-grid">
+        <article class="blog-card">
+            <img src="assets/js.jpg" alt="JavaScript article">
+            <div>
+                <h3>How I Started Learning JavaScript</h3>
+                <p>My journey from zero to building real projects with JavaScript.</p>
+                <a href="https://mohamedcoding.blogspot.com/2026/07/homework_0800651697.html" class="read-more">Read More ↗</a>
+            </div>
+        </article>
+        <article class="blog-card">
+            <img src="assets/html css.jpg" alt="HTML and CSS article">
+            <div>
+                <h3>HTML & CSS Basics for Beginners</h3>
+                <p>A simple guide to understanding the basics of HTML and CSS.</p>
+                <a href="https://mohamedcoding.blogspot.com/2026/08/doctype-html-html-lang-en-head-meta_01264652640.html" class="read-more">Read More ↗</a>
+            </div>
+        </article>
+    </div>
+    <div class="subscribe-box">
+        <div>
+            <strong>✉ Stay Updated</strong>
+            <p>Subscribe to get the latest articles and tutorials delivered to your inbox.</p>
+        </div>
+        <form id="subscribeForm">
+            <input id="subscribeEmail" type="email" placeholder="Your email address" required>
+            <button class="mini-btn" type="submit">Subscribe</button>
+        </form>
+    </div>
+</section>
             <section id="posts" class="dashboard-panel">
                 <div class="content-panel posts-panel">
                     <div class="messages-heading">

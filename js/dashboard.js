@@ -23,7 +23,7 @@ const escapeHTML = (value) => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    const dashboardPanels = Array.from(document.querySelectorAll(".dashboard-panel"));
+    const dashboardPanels = Array.from(document.querySelectorAll(".dashboard-panel, #blog"));
     const sidebarLinks = Array.from(document.querySelectorAll(".sidebar-link"));
     const dashboardSidebar = document.querySelector(".dashboard-sidebar");
     const dashboardSidebarToggle = document.getElementById("dashboardSidebarToggle");
@@ -62,15 +62,15 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const showPanel = (panelId) => {
-        const targetId = panelId || "blog";
+        const validId = panelId && document.getElementById(panelId) ? panelId : "dashboard-home";
 
         dashboardPanels.forEach((panel) => {
-            panel.classList.toggle("visible", panel.id === targetId);
+            panel.classList.toggle("visible", panel.id === validId);
         });
 
         sidebarLinks.forEach((link) => {
             const href = link.getAttribute("href") || "";
-            const matches = href === `#${targetId}`;
+            const matches = href === `#${validId}`;
             link.classList.toggle("active", matches);
         });
 
@@ -101,8 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    const initialPanelId = window.location.hash ? window.location.hash.slice(1) : "blog";
-    showPanel(document.getElementById(initialPanelId) ? initialPanelId : "blog");
+    const initialPanelId = window.location.hash ? window.location.hash.slice(1) : "dashboard-home";
+    showPanel(document.getElementById(initialPanelId) ? initialPanelId : "dashboard-home");
 
     const showStatus = (message) => {
         if (messagesStatus) {
